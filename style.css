@@ -34,9 +34,50 @@ h1{
 	color: azure;
 }
 
+h2{
+	font-size: 35px;
+	margin-bottom: 30px;
+	color: azure;
+	text-align: center;
+}
+
+h3{
+	font-size: 20px;
+	margin-bottom: 20px;
+	color: azure;
+	text-align: center;
+}
+
 img{
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
 	object-fit: cover;
+}
+
+
+ul{
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.activities-container{
+	display: flex;
+	gap: 30px;
+}
+
+.activity-block{
+	flex: 1;
+	background-color: #333;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.activity-block{
+	background-color: #333;
+	padding: 25px;
+	border-radius: 12px;
 }
