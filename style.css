@@ -31,6 +31,7 @@ h2 {
     margin-bottom: 20px;
     padding: 25px;
 	color: #dd9e0d;
+	font-weight: normal;
 }
 
 h2::after {
@@ -74,6 +75,9 @@ ul {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: #0f81cd #1a1a1a;
 }
 
 .scroll-container section {
@@ -176,14 +180,14 @@ nav{
 }
 
 nav a {
-	color: #00ff41;
+	color: white;
 	text-decoration: none;
 	font-family:'Archivio', sans-serif;
 	font-size: 15px;
-	transition: 0,3s;
+	transition: 0.3s;
 }
 
-nav a:not(:last-child)::after{
+nav a:not(:last-child):not(:first-child)::after{
 	content: "|";
 	margin-left: 30px;
 	margin-right: 0px;
@@ -195,4 +199,16 @@ nav a:not(:last-child)::after{
 nav a:hover{
 	color: #dd9e0d;
 	text-shadow: 0 0 10px #dd9e0d;
+}
+
+.nav-num{
+	color: #00ff41;
+}
+
+.nav-name{
+	color: white;
+	margin-right: auto;
+	font-weight: bold;
+	font-size: 15px;
+	letter-spacing: 2px;
 }
