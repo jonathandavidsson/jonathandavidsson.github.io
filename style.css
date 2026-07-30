@@ -59,7 +59,6 @@ ul {
 
 .activities-container {
     display: flex;
-    gap: 30px;
 }
 
 .activity-block {
@@ -116,4 +115,14 @@ ul {
     margin-top: 40px;
 	margin-left: 6rem;
 	color: #dd9e0d;
+}
+
+hr.activity-separator {
+	border: none;
+	width: 4px;
+	background-color: #5ecd0f;
+	border-radius: 5px;
+
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
