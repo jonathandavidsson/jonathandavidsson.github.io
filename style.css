@@ -131,3 +131,29 @@ hr.activity-separator {
         0 0 15px #0f81cd,
         0 0 30px #0f81cd;
 }
+
+.education-img{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	flex-shrink: 0;
+	margin-left: 200px;
+}
+
+.education-block {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 40px;
+
+	flex-shrink: 0;
+}
+
+.education-img img {
+    width: 250px;
+    height: auto;
+    border-radius: 0;
+    float: none;
+    object-fit: contain;
+}
