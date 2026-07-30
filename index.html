@@ -112,22 +112,31 @@
 			typewriterText.textContent = '';
 
 			let i = 0;
+			let typingTimer;
 
 			function typeWriter() {
 				if (i < nameToType.length) {
+					clearTimeout(typingTimer);
 					typewriterText.textContent += nameToType.charAt(i);
 					i++;
-					setTimeout(typeWriter, 150);
+					typingTimer = setTimeout(typeWriter, 150);
 				}
 			}
 
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach(entry => {
 					if (entry.isIntersecting) {
+						typewriterText.textContent = '';
+						i = 0;
 						typeWriter();
-						observer.unobserve(entry.target);
+					}else{
+						clearTimeout(typingTimer);
+						typewriterText.textContent = '';
 					}
 				});
+			},{
+				root: document.querySelector('.scroll-container'),
+				threshold: 0.5
 			});
 
 			const infoSection = document.getElementById('info');

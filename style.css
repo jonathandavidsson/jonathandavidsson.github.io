@@ -25,6 +25,7 @@ h2 {
     margin-bottom: 20px;
     padding: 25px;
 	color: #dd9e0d;
+	color: #00ff41;
 }
 
 h2::after {
@@ -115,6 +116,7 @@ ul {
     margin-top: 40px;
 	margin-left: 6rem;
 	color: #dd9e0d;
+	color: #00ff41;
 }
 
 hr.activity-separator {
@@ -228,12 +230,17 @@ nav a:hover{
     align-items: center;
     
     opacity: 0.4;
-    z-index: -1;
 }
 
 .ring-outer, .ring-inner, .cyber-core {
     position: absolute;
     border-radius: 50%;
+    
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; 
 }
 
 .ring-outer {
@@ -259,6 +266,16 @@ nav a:hover{
     background-color: #0f81cd;  
     box-shadow: 0 0 20px #0f81cd, 0 0 40px #0f81cd;
     animation: pulse 4s ease-in-out infinite; 
+}
+
+#typewriter::after{
+	content: '_';
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50%      { opacity: 0; }
 }
 
 @keyframes spin {
