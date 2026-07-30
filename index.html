@@ -21,7 +21,7 @@
 		</nav>
 		<div class = "scroll-container">
 			<section id = "info">
-				<h1>JONATHAN DAVIDSSON</h1>
+				<h1 id = "typewriter">JONATHAN DAVIDSSON</h1>
 				<div class = "information-block">
 					<p>
 						I am a driven Computer Science student at Umeå University with a strong interest in <strong>Artificial Intelligence and Cybersecurity</strong>. 
@@ -106,5 +106,34 @@
 				<p>Contact info, email, phone nr, etc</p>
 			</section>
 		</div>
+		<script>
+			const typewriterText = document.getElementById('typewriter');
+			const nameToType = typewriterText.textContent;
+			typewriterText.textContent = '';
+
+			let i = 0;
+
+			function typeWriter() {
+				if (i < nameToType.length) {
+					typewriterText.textContent += nameToType.charAt(i);
+					i++;
+					setTimeout(typeWriter, 150);
+				}
+			}
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						typeWriter();
+						observer.unobserve(entry.target);
+					}
+				});
+			});
+
+			const infoSection = document.getElementById('info');
+			if(infoSection) {
+				observer.observe(infoSection);
+			}	
+		</script>
 	</body>
 </html>
