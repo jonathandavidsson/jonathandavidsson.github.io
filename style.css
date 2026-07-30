@@ -165,11 +165,34 @@ nav{
 	left: 0;
 	width: 100%;
 
-	background-color: black;
+	background-color: rgb(9, 9, 9);
+	align-items: center;
 
 	display: flex;
 	justify-content: flex-end;
 	gap: 40px;
 	padding: 20px;
 	z-index: 999;
+}
+
+nav a {
+	color: #00ff41;
+	text-decoration: none;
+	font-family:'Archivio', sans-serif;
+	font-size: 15px;
+	transition: 0,3s;
+}
+
+nav a:not(:last-child)::after{
+	content: "|";
+	margin-left: 30px;
+	margin-right: 0px;
+	color: white;
+	font-size: 30px;
+	vertical-align: middle;
+}
+
+nav a:hover{
+	color: #dd9e0d;
+	text-shadow: 0 0 10px #dd9e0d;
 }
