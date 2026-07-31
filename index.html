@@ -142,7 +142,18 @@
 			const infoSection = document.getElementById('info');
 			if(infoSection) {
 				observer.observe(infoSection);
-			}	
+			}
+			
+			const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			const h2Elements = document.querySelectorAll('h2');
+			
+			h2Elements.forEach(h2 => {
+				h2.dataset.originalText = h2.textContent.trim();
+			});
+
+			const h2Observer = new IntersectionObserver((entries) =>{
+				
+			})
 		</script>
 	</body>
 </html>
