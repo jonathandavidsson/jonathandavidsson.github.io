@@ -7,7 +7,8 @@
 
 body {
     color: #e0e0e0;
-    background: linear-gradient(135deg, rgb(9, 9, 9) 0%, rgb(20, 20, 20) 100%);
+    /*background: linear-gradient(135deg, rgb(9, 9, 9) 0%, rgb(20, 20, 20) 100%);*/
+	background-color: rgb(21, 20, 20);
     background-attachment: fixed;
     font-size: 18px;
 }
@@ -106,7 +107,8 @@ ul {
 
 .information-block,
 .education-block,
-.activities-container {
+.activities-container,
+.skills-block {
     margin-left: 8rem; 
 }
 
@@ -171,7 +173,7 @@ nav{
 	left: 0;
 	width: 100%;
 
-	background-color: rgb(9, 9, 9);
+	background-color: rgb(21, 20, 20);
 	align-items: center;
 
 	display: flex;
