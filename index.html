@@ -162,7 +162,7 @@
 
 						element.scrambleInterval = setInterval(()=>{
 							element.textContent = originalText.split("").map((char, index) => {
-								if(letter == " "){
+								if(char	 == " "){
 									return " ";
 								}
 								if(index < iteration){
@@ -175,7 +175,7 @@
 								clearInterval(element.scrambleInterval);
 							}
 
-							iteration += 1 / 3;
+							iteration += 1 / 2;
 						}, 30);
 					}
 				});
