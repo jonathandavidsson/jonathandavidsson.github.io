@@ -136,6 +136,9 @@
 			</section>
 		</div>
 		<script>
+
+			// Typewriter effect for h1 element
+			
 			const typewriterText = document.getElementById('typewriter');
 			const nameToType = typewriterText.textContent;
 			typewriterText.textContent = '';
@@ -172,6 +175,8 @@
 			if(infoSection) {
 				observer.observe(infoSection);
 			}
+
+			// Scramble effect for h2 elements
 			
 			const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			const h2Elements = document.querySelectorAll('h2');
@@ -227,10 +232,28 @@
         		.then(response => response.json()).then(repos =>{
 					repos.forEach(repo =>{
 						if(!repo.fork){
-							
+							const card = document.createElement('a');
+							card.href = repo.html_url;
+							card.target = '_blank';
+							card.className = 'project-card';
+
+							const description = repo.description ? repo.description : 'No description provided.';
+
+							const language = repo.language ? repo.language : 'N/A';
+
+							card.innerHTML = `
+								<h3>${repo.name}</h3>
+								<p>${description}</p>
+								<p><strong>Language:</strong> ${language}</p>
+							`;
+
+							projectsContainer.appendChild(card);
+
 						}
-					})
-				})
+					});
+				}).catch(error => {
+					console.error('Error fetching GitHub repositories:', error);
+				});
 			}
 
 		</script>
