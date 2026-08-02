@@ -216,6 +216,23 @@
 			h2Elements.forEach(h2 => {
 				h2Observer.observe(h2);
 			});
+
+			// Fetch GitHub projects
+
+			const githubUsername = 'jonathandavidsson';
+			const projectsContainer = document.getElementById('github-projects');
+
+			if(projectsContainer){
+				fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`)
+        		.then(response => response.json()).then(repos =>{
+					repos.forEach(repo =>{
+						if(!repo.fork){
+							
+						}
+					})
+				})
+			}
+
 		</script>
 	</body>
 </html>
