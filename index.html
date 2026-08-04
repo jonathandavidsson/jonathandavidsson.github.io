@@ -123,9 +123,13 @@
 					<p>
 						Here is a selection of projects I have developed during my Computer Science studies. They showcase my practical application of 
 						core concepts, ranging from backend systems in C and Java to algorithmic problem-solving. Feel free to browse through the projects 
-						below or visit my GitHub to explore the actual code!
+						below and visit my GitHub to explore the actual code!
 					</p>
-					<div id = "github-projects" class = "projects-grid"></div>
+					<div class = "carousel-container">
+						<button id = "prevBtn" class = "carousel-btn left">&lt;</button>
+						<div id = "github-projects" class = "projects-grid"></div>
+						<button id = "nextBtn" class = "carousel-btn right">&gt;</button>
+					</div>
 				</div>
 			</section>
 	
@@ -138,7 +142,7 @@
 		<script>
 
 			// Typewriter effect for h1 element
-			
+
 			const typewriterText = document.getElementById('typewriter');
 			const nameToType = typewriterText.textContent;
 			typewriterText.textContent = '';
@@ -224,35 +228,90 @@
 
 			// Fetch GitHub projects
 
-			const githubUsername = 'jonathandavidsson';
-			const projectsContainer = document.getElementById('github-projects');
+			// ==========================================
+			// 4. HÄMTA PROJEKT FRÅN GITHUB (CAROUSEL)
+			// ==========================================
+			const githubUsername = 'jonathandavidsson'; // Glöm inte att skriva ditt namn här igen!
+			const track = document.getElementById('github-projects');
 
-			if(projectsContainer){
+			// Vi skapar variabler för att hålla koll på projekten
+			let reposData = [];
+			let currentProjectIndex = 0;
+
+			if (track) {
 				fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`)
-        		.then(response => response.json()).then(repos =>{
-					repos.forEach(repo =>{
-						if(!repo.fork){
+					.then(response => response.json())
+					.then(repos => {
+						// Spara ner projekten (max 6 st)
+						reposData = repos.filter(repo => !repo.fork).slice(0, 6);
+						
+						// Bygg HTML för varje projekt (korten skapas men syns inte direkt)
+						reposData.forEach(repo => {
 							const card = document.createElement('a');
 							card.href = repo.html_url;
-							card.target = '_blank';
-							card.className = 'project-card';
+							card.target = "_blank";
+							card.className = "project-card";
 
-							const description = repo.description ? repo.description : 'No description provided.';
-
-							const language = repo.language ? repo.language : 'N/A';
+							const description = repo.description ? repo.description : "A university project focused on algorithms and backend architecture.";
+							const language = repo.language ? repo.language : "Code";
 
 							card.innerHTML = `
-								<h3>${repo.name}</h3>
-								<p>${description}</p>
-								<p><strong>Language:</strong> ${language}</p>
+								<div class="project-title">${repo.name}</div>
+								<div class="project-desc">${description}</div>
+								<div class="project-tech"> > ${language}</div>
 							`;
+							track.appendChild(card);
+						});
+						
+						// Uppdatera karusellen så första projektet hamnar i mitten
+						updateCarousel();
+					})
+					.catch(error => console.log("Kunde inte hämta från GitHub:", error));
+			}
 
-							projectsContainer.appendChild(card);
+			// Funktionen som delar ut "rollerna" (Mitten, Vänster, Höger) till korten
+			function updateCarousel() {
+				const cards = document.querySelectorAll('.project-card');
+				const total = cards.length;
+				
+				// Avbryt om vi inte har några projekt
+				if (total === 0) return; 
 
-						}
-					});
-				}).catch(error => {
-					console.error('Error fetching GitHub repositories:', error);
+				cards.forEach((card, index) => {
+					// Återställ alla kort först
+					card.className = "project-card";
+					
+					// Dela ut rollerna!
+					// ("Wrap-around" logiken gör så att om du står på första kortet, blir sista kortet "Föregående")
+					if (index === currentProjectIndex) {
+						card.classList.add('active'); // Det stora kortet i mitten
+					} else if (index === (currentProjectIndex - 1 + total) % total) {
+						card.classList.add('prev');   // Kortet till vänster
+					} else if (index === (currentProjectIndex + 1) % total) {
+						card.classList.add('next');   // Kortet till höger
+					}
+				});
+			}
+
+			// Koppla händelser till pil-knapparna!
+			const nextBtn = document.getElementById('nextBtn');
+			const prevBtn = document.getElementById('prevBtn');
+
+			if(nextBtn && prevBtn) {
+				nextBtn.addEventListener('click', () => {
+					const totalCards = document.querySelectorAll('.project-card').length;
+					if(totalCards > 0) {
+						currentProjectIndex = (currentProjectIndex + 1) % totalCards;
+						updateCarousel();
+					}
+				});
+
+				prevBtn.addEventListener('click', () => {
+					const totalCards = document.querySelectorAll('.project-card').length;
+					if(totalCards > 0) {
+						currentProjectIndex = (currentProjectIndex - 1 + totalCards) % totalCards;
+						updateCarousel();
+					}
 				});
 			}
 

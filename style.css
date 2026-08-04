@@ -309,6 +309,112 @@ nav a:hover{
 	animation: blink 1s step-end infinite;
 }
 
+.carousel-container {
+    position: absolute;
+    
+    top: 70%; 
+    left: 50%;
+    
+    transform: translate(-50%, -50%); 
+    
+    width: 100%;
+    max-width: 1000px; 
+    height: 250px; 
+    margin: 0;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card {
+    position: absolute;
+    
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    
+    width: 55%; 
+    height: 220px;
+    background-color: rgb(9, 9, 9);
+    border: 1px solid #0f81cd;
+    border-radius: 8px;
+    padding: 25px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    
+    transition: all 0.5s ease;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none; 
+}
+
+.project-card.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05); 
+    z-index: 3;
+    box-shadow: 0 0 25px rgba(15, 129, 205, 0.4);
+    border-color: #00ff41;
+    pointer-events: auto; 
+}
+
+.project-card.prev {
+    opacity: 0.4;
+    transform: translate(-110%, -50%) scale(0.85); 
+    z-index: 2;
+}
+
+.project-card.next {
+    opacity: 0.4;
+    transform: translate(10%, -50%) scale(0.85); 
+    z-index: 2;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(9, 9, 9);
+    color: #00ff41;
+    border: 2px solid #00ff41;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn.left { left: calc(22.5% - 70px);; }
+.carousel-btn.right { right: calc(22.5% - 70px);; }
+
+.carousel-btn:hover {
+    background: #00ff41;
+    color: rgb(9, 9, 9);
+    box-shadow: 0 0 15px #00ff41;
+}
+
+.project-title { color: #00ff41; font-size: 22px; font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
+.project-desc { color: #e0e0e0; font-size: 16px; font-family: 'PT Sans', sans-serif; line-height: 1.5; flex-grow: 1; }
+.project-tech { margin-top: 20px; color: #dd9e0d; font-size: 15px; font-family: 'JetBrains Mono', monospace; }
+
+#projects{
+    justify-content: flex-start;
+    padding-top: 15rem;
+}
+
 @keyframes blink {
 	0%, 100% { opacity: 1; }
 	50%      { opacity: 0; }
