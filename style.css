@@ -412,7 +412,7 @@ nav a:hover{
 
 #projects{
     justify-content: flex-start;
-    padding-top: 15rem;
+    padding-top: 12rem;
 }
 
 @keyframes blink {
