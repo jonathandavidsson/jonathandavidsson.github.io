@@ -95,7 +95,7 @@ ul {
     max-width: 800px;
     line-height: 1.6;
     font-size: 20px;
-    text-align: justify;
+    text-align: left;
     padding: 1rem 0rem;
     font-family: 'PT Sans', sans-serif;
 }
@@ -413,6 +413,11 @@ nav a:hover{
 #projects{
     justify-content: flex-start;
     padding-top: 12rem;
+}
+
+.skills-grid img:nth-child(5),
+.skills-grid img:nth-child(6) {
+    transform: scale(1.02); 
 }
 
 @keyframes blink {
