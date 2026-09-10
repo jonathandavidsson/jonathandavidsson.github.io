@@ -18,8 +18,8 @@
    			<a href="#education"><span class="nav-num">1.</span> EDUCATION</a>
     		<a href="#extracurricular"><span class="nav-num">2.</span> EXTRACURRICULAR</a>
     		<a href="#skills"><span class="nav-num">3.</span> SKILLS</a>
-			<a href="#projects"><span class="nav-num">4.</span> PROJECTS</a>
-    		<a href="#contact"><span class="nav-num">5.</span> CONTACT</a>
+			<!--<a href="#projects"><span class="nav-num">4.</span> PROJECTS</a>-->
+    		<a href="#contact"><span class="nav-num">4.</span> CONTACT</a>
 		</nav>
 		<div class = "scroll-container">
 			<section id = "info">
@@ -102,7 +102,7 @@
 						where the focus was on designing the most efficient solutions to informally stated challenges (similar to competitive programming on Kattis and LeetCode).
 					</p>
 					<ul>
-						<li><strong>Programming Languages:</strong> C, Java, Python, JavaScript, HTML, CSS</li>
+						<li><strong>Languages & Technologies:</strong> C, Java, Python, JavaScript, HTML, CSS</li>
 						<li><strong>Databases:</strong> SQL, Relational Database Architecture</li>
 						<li><strong>Core Competencies:</strong> Algorithmic Problem Solving, Code Optimization, Backend Development</li>
 					</ul>
@@ -116,7 +116,7 @@
 					</div>
 				</div>
 			</section>
-
+			<!-- Projects page... Uncomment when ready.
 			<section id = "projects">
 				<h2>PROJECTS</h2>
 				<div class = "projects-block">
@@ -132,7 +132,7 @@
 					</div>
 				</div>
 			</section>
-	
+			-->
 			<section id = "contact">
 				<h2>CONTACT	</h2>
 				<img src="images/default-bild-person.jpeg" alt="">
@@ -227,14 +227,9 @@
 			});
 
 			// Fetch GitHub projects
-
-			// ==========================================
-			// 4. HÄMTA PROJEKT FRÅN GITHUB (CAROUSEL)
-			// ==========================================
-			const githubUsername = 'jonathandavidsson'; // Glöm inte att skriva ditt namn här igen!
+			const githubUsername = 'jonathandavidsson';
 			const track = document.getElementById('github-projects');
 
-			// Vi skapar variabler för att hålla koll på projekten
 			let reposData = [];
 			let currentProjectIndex = 0;
 
@@ -242,10 +237,9 @@
 				fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`)
 					.then(response => response.json())
 					.then(repos => {
-						// Spara ner projekten (max 6 st)
+						
 						reposData = repos.filter(repo => !repo.fork).slice(0, 6);
 						
-						// Bygg HTML för varje projekt (korten skapas men syns inte direkt)
 						reposData.forEach(repo => {
 							const card = document.createElement('a');
 							card.href = repo.html_url;
@@ -263,37 +257,31 @@
 							track.appendChild(card);
 						});
 						
-						// Uppdatera karusellen så första projektet hamnar i mitten
 						updateCarousel();
 					})
 					.catch(error => console.log("Kunde inte hämta från GitHub:", error));
 			}
 
-			// Funktionen som delar ut "rollerna" (Mitten, Vänster, Höger) till korten
 			function updateCarousel() {
 				const cards = document.querySelectorAll('.project-card');
 				const total = cards.length;
 				
-				// Avbryt om vi inte har några projekt
 				if (total === 0) return; 
 
 				cards.forEach((card, index) => {
-					// Återställ alla kort först
+			
 					card.className = "project-card";
 					
-					// Dela ut rollerna!
-					// ("Wrap-around" logiken gör så att om du står på första kortet, blir sista kortet "Föregående")
 					if (index === currentProjectIndex) {
-						card.classList.add('active'); // Det stora kortet i mitten
+						card.classList.add('active');
 					} else if (index === (currentProjectIndex - 1 + total) % total) {
-						card.classList.add('prev');   // Kortet till vänster
+						card.classList.add('prev');
 					} else if (index === (currentProjectIndex + 1) % total) {
-						card.classList.add('next');   // Kortet till höger
+						card.classList.add('next'); 
 					}
 				});
 			}
 
-			// Koppla händelser till pil-knapparna!
 			const nextBtn = document.getElementById('nextBtn');
 			const prevBtn = document.getElementById('prevBtn');
 
