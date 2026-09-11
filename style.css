@@ -114,7 +114,7 @@ ul {
     margin-left: 8rem; 
 }
 
-.scroll-container section:not(#info)::after {
+.scroll-container section:not(#info):not(#contact)::after {
     content: "}";
     font-family: 'PT Sans', sans-serif;
     font-size: 45px; 
@@ -453,6 +453,52 @@ nav a:hover{
     width: 22px;
     height: 22px;
     fill: #00ff41;
+}
+
+.contact-links{
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    align-self: center;
+    transform: translateY(100px);
+}
+
+.contact-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #333; 
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.contact-icon svg{
+    width: 30px;
+    height: 30px;
+    fill: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.contact-icon:hover{
+    border-color: #00ff41;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4); 
+    transform: translateY(-5px);
+}
+
+.contact-icon:hover svg{
+    fill: #00ff41;
+}
+
+
+.manual-bracket {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 45px; 
+    margin-top: 0px;
+    margin-left: 6rem;
+    color: #00ff41;
 }
 
 @keyframes blink {
