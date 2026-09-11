@@ -204,8 +204,8 @@ nav a:not(:last-child):not(:first-child)::after{
 }
 
 nav a:hover{
-	color: #dd9e0d;
-	text-shadow: 0 0 10px #dd9e0d;
+	color: #00ff41;
+	text-shadow: 0 0 10px #00ff41
 }
 
 .nav-num{
