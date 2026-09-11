@@ -335,6 +335,48 @@
 				});
 			}
 
+			//Smooth navbar effect
+			document.querySelectorAll('nav a').forEach(link => {
+    			link.addEventListener('click', function(e) {
+					e.preventDefault();
+					
+					const targetId = this.getAttribute('href');
+					const targetSection = document.querySelector(targetId);
+					const scrollContainer = document.querySelector('.scroll-container');
+
+					if (targetSection && scrollContainer) {
+						const startPosition = scrollContainer.scrollTop;
+						const targetPosition = targetSection.offsetTop;
+						const distance = targetPosition - startPosition;
+						
+						const duration = 1200; 
+						let start = null;
+
+						scrollContainer.style.scrollSnapType = 'none';
+
+						function easeInOutCubic(t) {
+							return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+						}
+
+						function step(timestamp) {
+							if (!start) start = timestamp;
+							const progress = timestamp - start;
+							const timeRatio = Math.min(progress / duration, 1);
+							
+							scrollContainer.scrollTo(0, startPosition + distance * easeInOutCubic(timeRatio));
+
+							if (progress < duration) {
+								window.requestAnimationFrame(step);
+							} else {
+								scrollContainer.style.scrollSnapType = 'y mandatory';
+							}
+						}
+
+						window.requestAnimationFrame(step);
+					}
+				});
+			});
+
 		</script>
 	</body>
 </html>

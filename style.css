@@ -71,7 +71,6 @@ ul {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-	scroll-behavior: smooth;
 	scrollbar-width: thin;
 	scrollbar-color: #0f81cd #1a1a1a;
 }
@@ -120,7 +119,7 @@ ul {
     font-size: 45px; 
     
     margin-top: 0px;
-	margin-left: 6rem;
+	margin-left: 4rem;
 	color: #dd9e0d;
 	color: #00ff41;
 }
@@ -497,7 +496,7 @@ nav a:hover{
     font-family: 'PT Sans', sans-serif;
     font-size: 45px; 
     margin-top: 0px;
-    margin-left: 6rem;
+    margin-left: 4rem;
     color: #00ff41;
 }
 
