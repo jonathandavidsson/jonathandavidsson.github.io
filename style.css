@@ -73,6 +73,8 @@ ul {
     scroll-snap-type: y mandatory;
 	scrollbar-width: thin;
 	scrollbar-color: #0f81cd #1a1a1a;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
 }
 
 .scroll-container section {
@@ -498,6 +500,10 @@ nav a:hover{
     margin-top: 0px;
     margin-left: 4rem;
     color: #00ff41;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
 }
 
 @keyframes blink {
